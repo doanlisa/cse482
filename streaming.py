@@ -15,7 +15,7 @@ class MyListener(StreamListener):
     def __init__(self, time_limit=10):
         self.start_time = time.time()
         self.limit = time_limit
-        self.outFile = open('bts2.json', 'a')
+        self.outFile = open('bts2.json', 'w')
         super(MyListener, self).__init__()
         
     def on_data(self, data):
@@ -34,9 +34,12 @@ auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
 auth.set_access_token(A_TOKEN_KEY, A_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-myStream = Stream(auth, MyListener(time_limit=1800))
-myStream.filter(track=['BTS'])
+#myStream = Stream(auth, MyListener(time_limit=1800))
+#myStream.filter(track=['BTS'])
 
-with open('bts2.json') as f:
-    for line in f:
-        data.append(json.loads(line))
+file = open('bts2.json', 'r') 
+print file.readlines() 
+
+#with open('bts2.json') as f:
+#    for line in f:
+#        data.append(json.loads(line))
